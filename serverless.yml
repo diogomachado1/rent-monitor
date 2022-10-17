@@ -1,0 +1,29 @@
+service: rent-monitor-js
+
+frameworkVersion: '3'
+
+
+provider:
+  name: aws
+  timeout: 10
+  memorySize: 128
+  environment:
+    DISCORD_URL: ${file(./config.${opt:stage, 'dev'}.json):discord_url}
+  runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource: "*"
+
+plugins:
+  - serverless-offline
+
+functions:
+  rateHandler:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every minute
+      - schedule: rate(2 minutes)

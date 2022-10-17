@@ -1,0 +1,17 @@
+{
+  "name": "rent-monitor-js",
+  "version": "1.0.0",
+  "description": "Example of creating a function that runs as a cron job using the serverless `schedule` event",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "serverless-offline": "^11.1.2"
+  },
+  "dependencies": {
+    "axios": "^1.1.2"
+  },
+  "scripts": {
+    "dev": "nodemon ./src/main"
+  }
+}
